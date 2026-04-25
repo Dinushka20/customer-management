@@ -2,18 +2,12 @@
 -- Customer Management System - DDL (MariaDB)
 -- ============================================================
 
--- Drop tables in reverse dependency order
-DROP TABLE IF EXISTS family_member;
-DROP TABLE IF EXISTS address;
-DROP TABLE IF EXISTS mobile_number;
-DROP TABLE IF EXISTS customer;
-DROP TABLE IF EXISTS city;
-DROP TABLE IF EXISTS country;
+-- Removed DROP TABLE statements to prevent wiping the database on restart
 
 -- ------------------------------------------------------------
 -- Master: country
 -- ------------------------------------------------------------
-CREATE TABLE country (
+CREATE TABLE IF NOT EXISTS country (
                          id      BIGINT AUTO_INCREMENT PRIMARY KEY,
                          name    VARCHAR(100) NOT NULL UNIQUE
 );
@@ -21,7 +15,7 @@ CREATE TABLE country (
 -- ------------------------------------------------------------
 -- Master: city  (belongs to a country)
 -- ------------------------------------------------------------
-CREATE TABLE city (
+CREATE TABLE IF NOT EXISTS city (
                       id          BIGINT AUTO_INCREMENT PRIMARY KEY,
                       name        VARCHAR(100) NOT NULL,
                       country_id  BIGINT NOT NULL,
@@ -32,7 +26,7 @@ CREATE TABLE city (
 -- ------------------------------------------------------------
 -- Core: customer
 -- ------------------------------------------------------------
-CREATE TABLE customer (
+CREATE TABLE IF NOT EXISTS customer (
                           id              BIGINT AUTO_INCREMENT PRIMARY KEY,
                           name            VARCHAR(150) NOT NULL,
                           date_of_birth   DATE         NOT NULL,
@@ -44,7 +38,7 @@ CREATE TABLE customer (
 -- ------------------------------------------------------------
 -- Mobile numbers  (multiple per customer)
 -- ------------------------------------------------------------
-CREATE TABLE mobile_number (
+CREATE TABLE IF NOT EXISTS mobile_number (
                                id          BIGINT AUTO_INCREMENT PRIMARY KEY,
                                customer_id BIGINT       NOT NULL,
                                number      VARCHAR(20)  NOT NULL,
@@ -55,7 +49,7 @@ CREATE TABLE mobile_number (
 -- ------------------------------------------------------------
 -- Addresses  (multiple per customer)
 -- ------------------------------------------------------------
-CREATE TABLE address (
+CREATE TABLE IF NOT EXISTS address (
                          id              BIGINT AUTO_INCREMENT PRIMARY KEY,
                          customer_id     BIGINT       NOT NULL,
                          address_line1   VARCHAR(255) NOT NULL,
@@ -74,7 +68,7 @@ CREATE TABLE address (
 -- Family members  (many-to-many self-referencing on customer)
 -- family_member_id must also be a valid customer
 -- ------------------------------------------------------------
-CREATE TABLE family_member (
+CREATE TABLE IF NOT EXISTS family_member (
                                id                  BIGINT AUTO_INCREMENT PRIMARY KEY,
                                customer_id         BIGINT NOT NULL,
                                family_member_id    BIGINT NOT NULL,
@@ -88,10 +82,10 @@ CREATE TABLE family_member (
 );
 
 -- ------------------------------------------------------------
--- Indexes for common query patterns
+-- Indexes for common query patterns (Note: standard SQL CREATE INDEX does not support IF NOT EXISTS in all dialects natively without a procedure, but MariaDB 10.1.4+ supports it)
 -- ------------------------------------------------------------
-CREATE INDEX idx_customer_nic       ON customer(nic_number);
-CREATE INDEX idx_customer_name      ON customer(name);
-CREATE INDEX idx_mobile_customer    ON mobile_number(customer_id);
-CREATE INDEX idx_address_customer   ON address(customer_id);
-CREATE INDEX idx_fm_customer        ON family_member(customer_id);
+CREATE INDEX IF NOT EXISTS idx_customer_nic       ON customer(nic_number);
+CREATE INDEX IF NOT EXISTS idx_customer_name      ON customer(name);
+CREATE INDEX IF NOT EXISTS idx_mobile_customer    ON mobile_number(customer_id);
+CREATE INDEX IF NOT EXISTS idx_address_customer   ON address(customer_id);
+CREATE INDEX IF NOT EXISTS idx_fm_customer        ON family_member(customer_id);
