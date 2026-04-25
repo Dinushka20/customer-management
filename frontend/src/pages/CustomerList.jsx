@@ -42,7 +42,7 @@ export default function CustomerList() {
   };
 
   return (
-    <div className="glass-panel">
+    <div className="card">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <h2>Customers</h2>
         <div style={{ display: 'flex', gap: '10px' }}>
@@ -80,13 +80,13 @@ export default function CustomerList() {
           </thead>
           <tbody>
             {customers.map((c) => (
-              <tr key={c.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', transition: 'background 0.2s', ':hover': {background: 'rgba(255,255,255,0.05)'} }}>
+              <tr key={c.id}>
                 <td style={{ padding: '12px' }}>{c.nicNumber}</td>
                 <td style={{ padding: '12px', fontWeight: '500' }}>{c.name}</td>
                 <td style={{ padding: '12px' }}>{c.dateOfBirth}</td>
                 <td style={{ padding: '12px' }}>
                   {c.mobileNumbers?.length ? (
-                    <span style={{ background: 'rgba(99,102,241,0.2)', padding: '4px 8px', borderRadius: '4px', fontSize: '0.85rem' }}>
+                    <span style={{ background: '#dbeafe', color: '#1e40af', padding: '4px 8px', borderRadius: '4px', fontSize: '0.85rem', fontWeight: '500' }}>
                       {c.mobileNumbers[0]} {c.mobileNumbers.length > 1 && `(+${c.mobileNumbers.length - 1})`}
                     </span>
                   ) : '-'}

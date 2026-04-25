@@ -21,7 +21,7 @@ export default function CustomerView() {
   if (!customer) return <div style={{ textAlign: 'center', marginTop: '50px' }}>Loading...</div>;
 
   return (
-    <div className="glass-panel animate-fade-in" style={{ maxWidth: '800px', margin: '0 auto' }}>
+    <div className="card animate-fade-in" style={{ maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
         <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
           <button className="btn btn-secondary" onClick={() => navigate(-1)} style={{ padding: '8px' }}>
@@ -35,8 +35,8 @@ export default function CustomerView() {
       </div>
 
       {/* Basic Info */}
-      <div style={{ background: 'rgba(255,255,255,0.03)', padding: '30px', borderRadius: '12px', marginBottom: '20px' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '8px', background: 'linear-gradient(to right, #fff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+      <div style={{ background: '#f8fafc', border: '1px solid var(--border-light)', padding: '30px', borderRadius: '12px', marginBottom: '20px' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '8px', color: 'var(--text-main)' }}>
           {customer.name}
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '20px' }}>
@@ -63,28 +63,28 @@ export default function CustomerView() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
         {/* Contact Info */}
-        <div style={{ background: 'rgba(255,255,255,0.03)', padding: '25px', borderRadius: '12px' }}>
+        <div style={{ background: '#f8fafc', border: '1px solid var(--border-light)', padding: '25px', borderRadius: '12px' }}>
           <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
             <Phone size={20} color="var(--primary-color)" /> Mobile Numbers
           </h3>
           {customer.mobileNumbers?.length ? (
             <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
               {customer.mobileNumbers.map((num, i) => (
-                <li key={i} style={{ padding: '10px', background: 'rgba(0,0,0,0.2)', marginBottom: '8px', borderRadius: '6px' }}>{num}</li>
+                <li key={i} style={{ padding: '10px', background: '#ffffff', border: '1px solid var(--border-light)', marginBottom: '8px', borderRadius: '6px' }}>{num}</li>
               ))}
             </ul>
           ) : <p style={{ color: 'var(--text-muted)' }}>No mobile numbers recorded.</p>}
         </div>
 
         {/* Family Members */}
-        <div style={{ background: 'rgba(255,255,255,0.03)', padding: '25px', borderRadius: '12px' }}>
+        <div style={{ background: '#f8fafc', border: '1px solid var(--border-light)', padding: '25px', borderRadius: '12px' }}>
           <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
             <UsersIcon size={20} color="var(--primary-color)" /> Family Linked
           </h3>
           {customer.familyMembers?.length ? (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {customer.familyMembers.map((fm) => (
-                <Link key={fm.id} to={`/view/${fm.id}`} style={{ padding: '8px 12px', background: 'rgba(99,102,241,0.1)', color: '#fff', textDecoration: 'none', borderRadius: '6px', border: '1px solid rgba(99,102,241,0.3)', fontSize: '0.9rem', transition: 'all 0.2s', ':hover': {background: 'var(--primary-color)'} }}>
+                <Link key={fm.id} to={`/view/${fm.id}`} style={{ padding: '8px 12px', background: '#dbeafe', color: '#1e40af', textDecoration: 'none', borderRadius: '6px', border: '1px solid rgba(99,102,241,0.2)', fontSize: '0.9rem', transition: 'all 0.2s', ':hover': {background: 'var(--accent-color)', color: 'white'} }}>
                   {fm.name}
                 </Link>
               ))}
@@ -94,14 +94,14 @@ export default function CustomerView() {
       </div>
 
       {/* Addresses */}
-      <div style={{ background: 'rgba(255,255,255,0.03)', padding: '25px', borderRadius: '12px', marginTop: '20px' }}>
+      <div style={{ background: '#f8fafc', border: '1px solid var(--border-light)', padding: '25px', borderRadius: '12px', marginTop: '20px' }}>
         <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
           <MapPin size={20} color="var(--primary-color)" /> Known Addresses
         </h3>
         {customer.addresses?.length ? (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '15px' }}>
             {customer.addresses.map((a) => (
-              <div key={a.id} style={{ padding: '15px', borderLeft: '4px solid var(--primary-color)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px 8px 8px 4px' }}>
+              <div key={a.id} style={{ padding: '15px', borderLeft: '4px solid var(--accent-color)', background: '#ffffff', borderRadius: '4px 8px 8px 4px', border: '1px solid var(--border-light)' }}>
                 <p style={{ marginBottom: '5px' }}>{a.addressLine1}</p>
                 {a.addressLine2 && <p style={{ marginBottom: '5px' }}>{a.addressLine2}</p>}
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{a.cityName}, {a.countryName}</p>

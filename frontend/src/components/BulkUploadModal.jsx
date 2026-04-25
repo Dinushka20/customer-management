@@ -34,13 +34,13 @@ export default function BulkUploadModal({ onClose, onSuccess }) {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-      background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)',
+      background: 'rgba(0,0,0,0.3)', backdropFilter: 'blur(2px)',
       display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
     }}>
-      <div className="glass-panel animate-fade-in" style={{ width: '90%', maxWidth: '500px', position: 'relative' }}>
+      <div className="card animate-fade-in" style={{ width: '90%', maxWidth: '500px', position: 'relative' }}>
         <button 
           onClick={onClose} 
-          style={{ position: 'absolute', top: '15px', right: '15px', background: 'transparent', border: 'none', color: 'white', cursor: 'pointer' }}
+          style={{ position: 'absolute', top: '15px', right: '15px', background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
         >
           <X size={24} />
         </button>

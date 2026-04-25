@@ -127,7 +127,7 @@ export default function CustomerForm() {
   };
 
   return (
-    <div className="glass-panel animate-fade-in" style={{ maxWidth: '800px', margin: '0 auto' }}>
+    <div className="card animate-fade-in" style={{ maxWidth: '800px', margin: '0 auto' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '30px', gap: '15px' }}>
         <button className="btn btn-secondary" onClick={() => navigate(-1)} style={{ padding: '8px' }}>
           <ArrowLeft size={18} />
@@ -152,7 +152,7 @@ export default function CustomerForm() {
           <input required type="date" name="dateOfBirth" className="form-control" value={formData.dateOfBirth} onChange={handleChange} />
         </div>
 
-        <hr style={{ border: 'none', borderTop: '1px solid var(--surface-border)', margin: '30px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid var(--border-light)', margin: '30px 0' }} />
 
         {/* Mobile Numbers section */}
         <div>
@@ -177,7 +177,7 @@ export default function CustomerForm() {
           </button>
         </div>
 
-        <hr style={{ border: 'none', borderTop: '1px solid var(--surface-border)', margin: '30px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid var(--border-light)', margin: '30px 0' }} />
 
         {/* Addresses section */}
         <div>
@@ -185,7 +185,7 @@ export default function CustomerForm() {
           {formData.addresses.map((address, index) => {
             const availableCities = CITIES.filter(c => c.countryId === Number(address.countryId));
             return (
-              <div key={index} style={{ background: 'rgba(0,0,0,0.2)', padding: '20px', borderRadius: '8px', marginBottom: '15px', position: 'relative' }}>
+              <div key={index} style={{ background: '#f8fafc', border: '1px solid var(--border-light)', padding: '20px', borderRadius: '8px', marginBottom: '15px', position: 'relative' }}>
                 <button type="button" className="btn btn-danger" onClick={() => removeAddress(index)} style={{ position: 'absolute', top: '15px', right: '15px', padding: '6px' }}>
                   <Trash2 size={16} />
                 </button>
@@ -221,7 +221,7 @@ export default function CustomerForm() {
           </button>
         </div>
 
-        <hr style={{ border: 'none', borderTop: '1px solid var(--surface-border)', margin: '30px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid var(--border-light)', margin: '30px 0' }} />
 
         {/* Family Members section */}
         <div>
@@ -236,8 +236,9 @@ export default function CustomerForm() {
                   style={{
                     padding: '8px 16px', borderRadius: '20px', cursor: 'pointer', fontSize: '0.9rem',
                     transition: 'all 0.2s',
-                    background: isSelected ? 'var(--primary-color)' : 'rgba(255,255,255,0.05)',
-                    border: `1px solid ${isSelected ? 'var(--primary-color)' : 'var(--surface-border)'}`
+                    color: isSelected ? '#fff' : 'var(--text-main)',
+                    background: isSelected ? 'var(--accent-color)' : '#ffffff',
+                    border: `1px solid ${isSelected ? 'var(--accent-color)' : 'var(--border-light)'}`
                   }}
                 >
                   {c.name} ({c.nicNumber})
