@@ -9,7 +9,7 @@ This project demonstrates robust CRUD operations, relational data handling, and 
 
 - [x] Create Customer
 - [x] Update Customer
-- [x] View Customer mapping (ID, NIC, DOB)
+- [x] View Customer Details (ID, NIC, DOB)
 - [x] List Customers (Paginated Table View)
 - [x] Multiple Mobile Numbers per customer
 - [x] Multiple Addresses per customer
@@ -37,7 +37,7 @@ This project demonstrates robust CRUD operations, relational data handling, and 
 - **Excel Logic**: Uses **Apache POI (SAX API)** to process large files without high memory usage.
 
 ### Frontend
-- **Library**: React 19 + Vite for fast development and execution.
+- **Library**: React (with Vite) for fast development and execution.
 - **Icons**: Lucide React for professional iconography.
 - **Styling**: Pure Vanilla CSS (CSS Variables) for high performance.
 
