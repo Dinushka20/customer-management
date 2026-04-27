@@ -107,5 +107,4 @@ cd backend && ./mvnw test
 cd frontend && npm run test:e2e
 ```
 
----
-*Created for the Customer Management System Assignment.*
+
