@@ -9,7 +9,7 @@ test.describe('Customer Management Frontend E2E', () => {
     await page.goto('/');
     // Check Sidebar
     await expect(page.locator('.sidebar')).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'OmniDB' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Customer Management' })).toBeVisible();
 
     // Check main title
     await expect(page.getByRole('heading', { name: 'Customers' })).toBeVisible();

@@ -30,7 +30,7 @@ function App() {
             <div style={{ background: '#ffffff', padding: '8px', borderRadius: '8px', display: 'flex' }}>
               <Users size={24} color="var(--primary-color)" />
             </div>
-            <h2 style={{ margin: 0, color: '#fff', fontSize: '1.2rem', fontWeight: 700 }}>OmniDB</h2>
+            <h2 style={{ margin: 0, color: '#fff', fontSize: '1.2rem', fontWeight: 700 }}>Customer Management</h2>
           </div>
           
           <nav className="sidebar-nav">
